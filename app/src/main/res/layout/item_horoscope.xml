@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/symbolImageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src= "@drawable/icon_aries"
+        android:background="#FFEB3B"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:background="#A1EF68">
+
+       <TextView
+           android:id="@+id/nameTextView"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:textSize="16dp"
+           android:textColor="#084C97"
+           android:background="#A1EF68"
+           android:text = "Nombre"/>
+
+       <TextView
+           android:id="@+id/dateTextView"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:textSize="14dp"
+           android:textColor="#BA0C0C"
+           android:background="#A1EF68"
+           android:text = "Fechas"/>
+    </LinearLayout>
+
+
+</LinearLayout>
