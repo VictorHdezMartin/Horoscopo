@@ -1,6 +1,6 @@
 package com.example.horoscopo.Data
 
-    class Horoscope (val id: String, val name: Int, val dates: Int, val image: Int) {
+    class Horoscope (val id:String, var pos: Int, val name: Int, val dates: Int, val image: Int) {
 
 
 

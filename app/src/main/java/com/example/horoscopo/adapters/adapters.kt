@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.horoscopo.Data.Horoscope
@@ -36,12 +37,33 @@ class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
     fun render(horoscope: Horoscope){
 
       // llamada fuera del activity para poder acceder a los metodos
-      //  var context = itemView.context
+        var context = itemView.context
       //  nameTextView.text = context.getString(horoscope.name)
       //  symbolImageView.setImageDrawable((context.getDrawable(horoscope.image)))
 
-        nameTextView.setText(horoscope.name)
-        dateTextView.setText(horoscope.dates)
-        symbolImageView.setImageResource(horoscope.image)
+         if (horoscope.pos % 2 != 0) {
+             itemView.setBackgroundColor(context.getColor(R.color.white))
+
+             with (nameTextView) {
+                 setTextColor(context.getColor(R.color.granate))
+             }
+             dateTextView.setTextColor(context.getColor(R.color.black))
+         }
+       else {
+             itemView.setBackgroundColor(context.getColor(R.color.gris))
+
+             with (nameTextView) {
+                 setTextColor(context.getColor(R.color.granate))
+             }
+             dateTextView.setTextColor(context.getColor(R.color.marino))
+         }
+
+       nameTextView.setText(horoscope.name)
+       dateTextView.setText(horoscope.dates)
+       symbolImageView.setImageResource(horoscope.image)
+
+
+
+
     }
 }
