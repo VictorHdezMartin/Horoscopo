@@ -24,7 +24,7 @@
            android:id="@+id/nameTextView"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:text = "Nombre"
+           android:text = "nombre signo zodiacal"
            android:textStyle="bold"
            android:textSize="16dp"/>
 
@@ -34,7 +34,7 @@
            android:layout_height="wrap_content"
            android:textStyle="bold"
            android:textSize="14dp"
-           android:text = "Fechas"/>
+           android:text = "intervalo de fechas"/>
 
     </LinearLayout>
 </LinearLayout>

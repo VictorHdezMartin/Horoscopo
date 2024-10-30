@@ -3,8 +3,8 @@
 
     <string name="hName_Aries">Aries</string>
     <string name="hName_Tauro">Tauro</string>
-    <string name="hName_Geminis">Geminis</string>
-    <string name="hName_Cancer">Cancer</string>
+    <string name="hName_Geminis">Géminis</string>
+    <string name="hName_Cancer">Cáncer</string>
     <string name="hName_Leo">Leo</string>
     <string name="hName_Virgo">Virgo</string>
     <string name="hName_Libra">Libra</string>
@@ -12,7 +12,7 @@
     <string name="hName_Sagitario">Sagitario</string>
     <string name="hName_Capricornio">Capricornio</string>
     <string name="hName_Acuario">Acuario</string>
-    <string name="hName_Piscis">Piscis</string>
+    <string name="hName_Piscis">Píscis</string>
 
     <string name="hDate_Aries">21 marzo a 19 april</string>
     <string name="hDate_Tauro">20 abril a 20 mayo</string>

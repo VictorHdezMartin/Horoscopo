@@ -15,7 +15,7 @@ class HoroscopeAdapter (val items: List<Horoscope>): RecyclerView.Adapter<Horosc
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoroscopeViewHolder {
 
        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_horoscope, parent, false)
-        return HoroscopeViewHolder(view)
+       return HoroscopeViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -61,9 +61,5 @@ class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
        nameTextView.setText(horoscope.name)
        dateTextView.setText(horoscope.dates)
        symbolImageView.setImageResource(horoscope.image)
-
-
-
-
     }
 }
