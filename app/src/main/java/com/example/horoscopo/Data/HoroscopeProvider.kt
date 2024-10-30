@@ -19,7 +19,7 @@ class HoroscopeProvider {
             Horoscope("Capricornio", 10, R.string.hName_Capricornio, R.string.hDate_Capricornio, R.drawable.icon_capricornio),
             Horoscope("Acuario", 11, R.string.hName_Acuario, R.string.hDate_Acuario, R.drawable.icon_acuario),
             Horoscope("Piscis", 12, R.string.hName_Piscis, R.string.hDate_Piscis, R.drawable.icon_piscis)
-    )
+        )
     fun findAll(): List<Horoscope> {
         return horoscopeList
     }

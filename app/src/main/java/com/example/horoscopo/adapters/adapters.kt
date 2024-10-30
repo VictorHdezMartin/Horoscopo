@@ -10,21 +10,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.horoscopo.Data.Horoscope
 import com.example.horoscopo.R
 
-class HoroscopeAdapter (val items: List<Horoscope>): RecyclerView.Adapter<HoroscopeViewHolder> () {
+class HoroscopeAdapter (val items: List<Horoscope>, val onItemClick:(Int)-> Unit): RecyclerView.Adapter<HoroscopeViewHolder> () {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoroscopeViewHolder {
-
        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_horoscope, parent, false)
        return HoroscopeViewHolder(view)
     }
-
     override fun getItemCount(): Int {
        return items.size
     }
-
     override fun onBindViewHolder(holder: HoroscopeViewHolder, position: Int) {
        val horoscope = items[position]
        holder.render(horoscope)
+
+        holder.itemView.setOnClickListener(){
+            println("Hemos pinchado en: " + horoscope.id)   // lo vemos en el Logcat
+            onItemClick(position)
+        }
     }
 }
 
@@ -46,10 +48,10 @@ class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
              nameTextView.setTextColor(context.getColor(R.color.granate))
              dateTextView.setTextColor(context.getColor(R.color.black))
          }
-       else {
-             itemView.setBackgroundColor(context.getColor(R.color.gris))
-             nameTextView.setTextColor(context.getColor(R.color.granate))
-             dateTextView.setTextColor(context.getColor(R.color.marino))
+         else {
+               itemView.setBackgroundColor(context.getColor(R.color.gris))
+               nameTextView.setTextColor(context.getColor(R.color.granate))
+               dateTextView.setTextColor(context.getColor(R.color.marino))
          }
 
        nameTextView.setText(horoscope.name)
