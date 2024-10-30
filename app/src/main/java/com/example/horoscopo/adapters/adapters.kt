@@ -41,20 +41,14 @@ class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
       //  nameTextView.text = context.getString(horoscope.name)
       //  symbolImageView.setImageDrawable((context.getDrawable(horoscope.image)))
 
-         if (horoscope.pos % 2 != 0) {
+         if (horoscope.pos % 2 != 0) {                                                              // vemos si el item es par o impar
              itemView.setBackgroundColor(context.getColor(R.color.white))
-
-             with (nameTextView) {
-                 setTextColor(context.getColor(R.color.granate))
-             }
+             nameTextView.setTextColor(context.getColor(R.color.granate))
              dateTextView.setTextColor(context.getColor(R.color.black))
          }
        else {
              itemView.setBackgroundColor(context.getColor(R.color.gris))
-
-             with (nameTextView) {
-                 setTextColor(context.getColor(R.color.granate))
-             }
+             nameTextView.setTextColor(context.getColor(R.color.granate))
              dateTextView.setTextColor(context.getColor(R.color.marino))
          }
 
