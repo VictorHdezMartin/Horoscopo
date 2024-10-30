@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Horoscope</string>
+    <string name="hName_Aries">Aries</string>
+    <string name="hName_Tauro">Taurus</string>
+    <string name="hName_Leo">Leo</string>
+    <string name="hName_Virgo">Virgo</string>
+    <string name="hName_Libra">Libra</string>
+    <string name="hName_Escorpio">Scorpio</string>
+    <string name="hName_Sagitario">Sagittarius</string>
+    <string name="hName_Capricornio">Capricorn</string>
+    <string name="hName_Acuario">Aquarius</string>
+    <string name="hName_Piscis">Pisces</string>
+    <string name="hDate_Aries">21 march to 19 april</string>
+    <string name="hDate_Tauro">20 april to 20 may</string>
+    <string name="hDate_Geminis">21 may to 20 june</string>
+    <string name="hDate_Cancer">21 june to 22 july</string>
+    <string name="hDate_Leo">23 july to 22 august</string>
+    <string name="hDate_Virgo">23 august to 22 september</string>
+    <string name="hDate_Libra">23 september to 22 october</string>
+    <string name="hDate_Escorpio">23 october to 21 november</string>
+    <string name="hDate_Sagitario">22 november to 20 december</string>
+    <string name="hDate_Capricornio">21 december to 19 january</string>
+    <string name="hDate_Acuario">20 january to 18 february</string>
+    <string name="hDate_Piscis">19 february to 20 march</string>
+    <string name="hName_Cancer">Cancer</string>
+    <string name="hName_Geminis">Gemini</string>
 </resources>
