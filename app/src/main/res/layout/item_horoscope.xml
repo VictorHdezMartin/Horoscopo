@@ -32,7 +32,6 @@
            android:id="@+id/dateTextView"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:textStyle="bold"
            android:textSize="14dp"
            android:text = "intervalo de fechas"/>
 
