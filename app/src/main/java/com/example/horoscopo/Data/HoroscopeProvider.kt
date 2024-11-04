@@ -7,18 +7,18 @@ class HoroscopeProvider {
 // static
     companion object {
         private val horoscopeList: List<Horoscope> = listOf(
-            Horoscope("Aries", 1, R.string.hName_Aries, R.string.hDate_Aries, R.drawable.icon_aries),
-            Horoscope("Tauro", 2, R.string.hName_Tauro, R.string.hDate_Tauro, R.drawable.icon_tauro),
-            Horoscope("Geminis", 3, R.string.hName_Geminis, R.string.hDate_Geminis, R.drawable.icon_geminis),
-            Horoscope("Cancer", 4, R.string.hName_Cancer, R.string.hDate_Cancer, R.drawable.icon_cancer),
-            Horoscope("Leo", 5, R.string.hName_Leo, R.string.hDate_Leo, R.drawable.icon_leo),
-            Horoscope("Virgo", 6, R.string.hName_Virgo, R.string.hDate_Virgo, R.drawable.icon_virgo),
-            Horoscope("Libra", 7, R.string.hName_Libra, R.string.hDate_Libra, R.drawable.icon_libra),
-            Horoscope("Escorpio", 8, R.string.hName_Escorpio, R.string.hDate_Escorpio, R.drawable.icon_escorpio),
-            Horoscope("Sagitario", 9, R.string.hName_Sagitario, R.string.hDate_Sagitario, R.drawable.icon_sagitario),
-            Horoscope("Capricornio", 10, R.string.hName_Capricornio, R.string.hDate_Capricornio, R.drawable.icon_capricornio),
-            Horoscope("Acuario", 11, R.string.hName_Acuario, R.string.hDate_Acuario, R.drawable.icon_acuario),
-            Horoscope("Piscis", 12, R.string.hName_Piscis, R.string.hDate_Piscis, R.drawable.icon_piscis)
+            Horoscope("Aries", 1, R.string.hName_Aries, R.string.hDate_Aries, R.drawable.icon_aries, R.string.hRef_Aries, R.string.hDetalle_Aries),
+            Horoscope("Tauro", 2, R.string.hName_Tauro, R.string.hDate_Tauro, R.drawable.icon_tauro, R.string.hRef_Tauro, R.string.hDetalle_Tauro),
+            Horoscope("Geminis", 3, R.string.hName_Geminis, R.string.hDate_Geminis, R.drawable.icon_geminis, R.string.hRef_Geminis, R.string.hDetalle_Geminis),
+            Horoscope("Cancer", 4, R.string.hName_Cancer, R.string.hDate_Cancer, R.drawable.icon_cancer, R.string.hRef_Cancer, R.string.hDetalle_Cancer),
+            Horoscope("Leo", 5, R.string.hName_Leo, R.string.hDate_Leo, R.drawable.icon_leo, R.string.hRef_Leo, R.string.hDetalle_Leo),
+            Horoscope("Virgo", 6, R.string.hName_Virgo, R.string.hDate_Virgo, R.drawable.icon_virgo, R.string.hRef_Virgo, R.string.hDetalle_Virgo),
+            Horoscope("Libra", 7, R.string.hName_Libra, R.string.hDate_Libra, R.drawable.icon_libra, R.string.hRef_Libra, R.string.hDetalle_Libra),
+            Horoscope("Escorpio", 8, R.string.hName_Escorpio, R.string.hDate_Escorpio, R.drawable.icon_escorpio, R.string.hRef_Escorpio, R.string.hDetalle_Escorpio),
+            Horoscope("Sagitario", 9, R.string.hName_Sagitario, R.string.hDate_Sagitario, R.drawable.icon_sagitario, R.string.hRef_Sagitario, R.string.hDetalle_Sagitario),
+            Horoscope("Capricornio", 10, R.string.hName_Capricornio, R.string.hDate_Capricornio, R.drawable.icon_capricornio, R.string.hRef_Capricornio, R.string.hDetalle_Capricornio),
+            Horoscope("Acuario", 11, R.string.hName_Acuario, R.string.hDate_Acuario, R.drawable.icon_acuario, R.string.hRef_Acuario, R.string.hDetalle_Acuario),
+            Horoscope("Piscis", 12, R.string.hName_Piscis, R.string.hDate_Piscis, R.drawable.icon_piscis, R.string.hRef_Piscis, R.string.hDetalle_Piscis)
         )
     fun findAll(): List<Horoscope> {
         return horoscopeList

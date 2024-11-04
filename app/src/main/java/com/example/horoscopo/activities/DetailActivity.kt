@@ -1,5 +1,7 @@
 package com.example.horoscopo.activities
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -14,10 +16,13 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.horoscopo.Data.Horoscope
 import com.example.horoscopo.Data.HoroscopeProvider
 import com.example.horoscopo.R
+import com.example.horoscopo.utils.SessionManager
 
 class DetailActivity : AppCompatActivity() {
 
     lateinit var horoscope: Horoscope
+    lateinit var session: SessionManager
+    var isFavorite: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,7 +33,22 @@ class DetailActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.tv).setText(horoscope.name)
         findViewById<ImageView>(R.id.iv).setImageResource(horoscope.image)
+
+        supportActionBar?.title = getString(horoscope.name)
+        supportActionBar?.subtitle = getString(horoscope.dates)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)                        // activamos el botón atrás del menú
+
+        session = SessionManager(this)
+
+
+        if (session.getFavorite() == horoscope.id) {
+            println("horoscopo es favorito")
+            isFavorite = true
+        }
+        else {
+            println("horoscopo NO es favorito")
+
+        }
         findViewById<Button>(R.id.b).setOnClickListener{
             finish()
         }
@@ -51,7 +71,14 @@ class DetailActivity : AppCompatActivity() {
             }
 
             R.id.menu_favorite -> {
+                val editor = session.edit()
                 println("menu favorito")     // se ve en el logcat
+                if (isFavorite) {
+                    editor.remove("favorite_horoscope")
+                } else
+                    editor.putString("favorite_horoscope", horoscope.id)
+
+                editor.apply()
                 return true
             }
 
@@ -67,7 +94,7 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onBackPressed() {            // para el botón físico del teléfono
 
-        if (horoscope.id == "piscis"){
+        if (horoscope.id == "Piscis"){
             Toast.makeText(this, "no puedes volver", Toast.LENGTH_SHORT).show()
         }
         else {

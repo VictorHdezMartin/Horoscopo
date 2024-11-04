@@ -46,18 +46,22 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/detalleLinearLayoutView"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content">
 
-
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/detalleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="intervalo de fechas"
-            android:textSize="14dp" />
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:background="@color/amarillo"/>
 
     </LinearLayout>
 </LinearLayout>

@@ -27,4 +27,36 @@
     <string name="hDate_Acuario">20 enero a 18 febrero</string>
     <string name="hDate_Piscis">19 febrero a 20 marzo</string>
 
+
+    <string name="hDetalle_Aries">Son los que siempre van un paso por delante, animan al resto a hacer lo mismo y de los signos en los que más puedes confiar. Eso sí, sacarán lo peor de ellos -impulsividad, impaciencia y egoísmo- si no estás a la altura de su energía. No son fáciles de llevar.</string>
+    <string name="hDetalle_Tauro">Su lealtad es difícil de conseguir. Pero una vez la tengas, será para siempre. Pocas veces pierden la paciencia o hacen papelitos en público. Solo cuando les empiezan a discutir algo en lo que saben que tienen razón. Si no la tienen, también la lucharán.</string>
+    <string name="hDetalle_Geminis">Uno de los rasgos de la personalidad de Géminis es que suele tener miedo al compromiso, ya que sus decisiones duran poco tiempo estables y cambian de opinión muy rápido. Son excelentes oradores. Cualquier cosa que salga por su boca te la creerás.</string>
+    <string name="hDetalle_Cancer">Son conocidos por dramáticos bajo cualquier circunstancia, pero lo que quizá no sepas es que estas enormes emociones que experimentan les hace ser los más empáticos del horóscopo. Son personas muy especiales, y ojito cuando se enojan.</string>
+    <string name="hDetalle_Leo">Su presencia y luz llenan el sitio... y a estos les encantan que suceda. Son bastante egocéntricos, valoran muchísimo el físico de los demás y siempre sacarán lo mejor de ti. Seres superiores gobernados por el Sol.</string>
+    <string name="hDetalle_Virgo">No hay detalle que se le escape, aunque el gran problema de la personalidad de los Virgo está en lo poco que fluyen. Necesitan saber cuándo y a qué hora para poder hacerlo. Siempre están pensando en lo que pasará después y muchas veces no viven el presente como deberían.</string>
+    <string name="hDetalle_Libra">Mala combinación si tenemos en cuenta que sopesan cada decisión que toman una media de mil veces. También se les reconoce por su elegancia y por no perder nunca los estribos (aunque lo estén deseando). Su misión está en echarse por la borda sin reflexionar tanto.</string>
+    <string name="hDetalle_Escorpio">No hay palabra que mejor defina la personalidad de Escorpio. Para todo, además: el amor, trabajo, discusiones, sexo, trabajo... Sin embargo, cuando salen heridos tratan de darlo todo, se cierran en banda y debes tener cuidado porque poseen bastante mal carácter. Sí, son los típicos que siempre te contestan mal.</string>
+    <string name="hDetalle_Sagitario">Gracias a que Júpiter es su planeta regente. Los Sagitario son los que siempre encuentran estacionamiento a la primera, los que consiguen las mejores ofertas... Le sale todo tan bien, que se enojan muchísimo cuando algo no sale bien. Al igual, les encanta expandir todos sus conocimientos.</string>
+    <string name="hDetalle_Capricornio">Cuando algo se les mete entre ceja y ceja, es mejor quitarles la cabeza que la idea. El principal rasgo de la personalidad de los Capricornio es que son muy, muy testarudos, y pocas veces reconocen su error. Su sentido de la responsabilidad asciende a niveles extremos y suelen ser bastante "workaholics".</string>
+    <string name="hDetalle_Acuario">La última cosa que harán será estar pendientes de los mensajes que les llegan. No es que no quieran comprometerse, pero prefieren no tener ataduras. El rasgo principal de la personalidad de los Acuario es que no suelen concentrarse en un solo camino.</string>
+    <string name="hDetalle_Piscis">sto les permite ser los más originales, pero también se hacen unas películas en la cabeza que se acaban creyendo. Viven más en las nubes que en el presente, lo que les hace también estar bastante fuera de sí. La empatía es su fuerte.</string>
+
+    <string name="hRef_Aries">La iniciativa es el punto fuerte de la personalidad de Aries</string>
+    <string name="hRef_Tauro">Tauro es uno de los signos más centrados del horóscopo</string>
+    <string name="hRef_Geminis">Cambiantes como los gemelos que representan su imagen</string>
+    <string name="hRef_Cancer">Son los más sensibles del zodiaco</string>
+    <string name="hRef_Leo">Cuando un Leo entra en un lugar, se nota</string>
+    <string name="hRef_Virgo">Analíticos y ordenados</string>
+    <string name="hRef_Libra">Los Libra son los más románticos del horóscopo, aunque también los más dudosos</string>
+    <string name="hRef_Escorpio">Intensidad</string>
+    <string name="hRef_Sagitario">La buena suerte la poseen ellos</string>
+    <string name="hRef_Capricornio">Cuerpo a tierra si tu intención es discutir con un Capricornio</string>
+    <string name="hRef_Acuario">Acuario representa la libertad y la rebeldía</string>
+    <string name="hRef_Piscis">Piscis es el signo más creativo del horóscopo</string>
+
+
+
+
+
+
 </resources>
