@@ -1,39 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--  android:orientation="horizontal" -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:paddingHorizontal="10dp">
 
-    <ImageView
-        android:id="@+id/symbolImageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:src= "@drawable/icon_aries"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp">
+
+        <ImageView
+            android:id="@+id/symbolImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_aries" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="nombre signo zodiacal"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="intervalo de fechas"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp">
+        android:layout_height="100dp">
 
-       <TextView
-           android:id="@+id/nameTextView"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:text = "nombre signo zodiacal"
-           android:textStyle="bold"
-           android:textSize="16dp"/>
 
-       <TextView
-           android:id="@+id/dateTextView"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:textSize="14dp"
-           android:text = "intervalo de fechas"/>
+
+        <TextView
+            android:id="@+id/detalleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="intervalo de fechas"
+            android:textSize="14dp" />
 
     </LinearLayout>
 </LinearLayout>

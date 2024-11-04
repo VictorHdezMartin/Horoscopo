@@ -27,9 +27,9 @@
         android:id="@+id/b"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="volver"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="188dp"
-        android:text="volver"/>
+        tools:layout_editor_absoluteY="621dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
