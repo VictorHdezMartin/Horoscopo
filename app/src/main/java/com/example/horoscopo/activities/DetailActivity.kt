@@ -37,6 +37,8 @@ class DetailActivity : AppCompatActivity() {
 
       findViewById<TextView>(R.id.tv).setText(horoscope.name)
       findViewById<ImageView>(R.id.iv).setImageResource(horoscope.image)
+      findViewById<TextView>(R.id.detalleSigno).setText(horoscope.description)
+
       findViewById<Button>(R.id.b).setOnClickListener {
           finish()
       }
@@ -59,24 +61,18 @@ class DetailActivity : AppCompatActivity() {
                 return true
             }
             R.id.menu_favorite -> {
-                /*
                 if (isFavorite) {
                     session.setFavorite("")
                 }
                 else {
                     session.setFavorite(horoscope.id)
                 }
-                */
-
-                if (!isFavorite)
-                    session.setFavorite(horoscope.id)
 
                 isFavorite = !isFavorite
                 setFavotiteIcon()
                 return true
             }
             R.id.menu_share -> {
-                println("Menu compartir")
                 return true
             }
         else -> {

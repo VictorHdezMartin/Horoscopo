@@ -2,6 +2,7 @@ package com.example.horoscopo.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,8 +10,6 @@ import com.example.horoscopo.Data.Horoscope
 import com.example.horoscopo.Data.HoroscopeProvider
 import com.example.horoscopo.R
 import com.example.horoscopo.adapters.HoroscopeAdapter
-import com.google.android.material.divider.MaterialDivider
-import com.google.android.material.divider.MaterialDividerItemDecoration
 
 class ListActivity : AppCompatActivity() {
 
@@ -33,8 +32,6 @@ class ListActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-      //  val divider = MaterialDividerItemDecoration(this, LinearLayoutManager.VERTICAL)
-      //  recyclerView.addItemDecoration(divider)
       }
     override fun onResume() {
         super.onResume()
