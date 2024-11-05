@@ -6,4 +6,6 @@
     <color name="marino">#084C97</color>
     <color name="amarillo">#FFEB3B</color>
     <color name="gris">#6FCAF6F0</color>
+    <color name="favorite">#F44336</color>
+
 </resources>

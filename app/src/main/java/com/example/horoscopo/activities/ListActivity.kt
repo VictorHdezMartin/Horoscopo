@@ -16,6 +16,7 @@ class ListActivity : AppCompatActivity() {
 
     lateinit var horoscopeList: List<Horoscope>
     lateinit var recyclerView: RecyclerView
+    lateinit var adapter: HoroscopeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,16 +26,20 @@ class ListActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         horoscopeList = HoroscopeProvider.findAll()
 
-        val adapter = HoroscopeAdapter(horoscopeList, {posicion -> val horoscope = horoscopeList[posicion]
-                                                                   navigateToDetail(horoscope)})
+        adapter = HoroscopeAdapter(horoscopeList, {posicion ->
+                         val horoscope = horoscopeList[posicion]
+                         navigateToDetail(horoscope)})
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        val divider = MaterialDividerItemDecoration(this, LinearLayoutManager.VERTICAL)
-        recyclerView.addItemDecoration(divider)
+      //  val divider = MaterialDividerItemDecoration(this, LinearLayoutManager.VERTICAL)
+      //  recyclerView.addItemDecoration(divider)
       }
-
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
+    }
     private fun navigateToDetail(horoscope: Horoscope) {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("horoscope_id", horoscope.id)

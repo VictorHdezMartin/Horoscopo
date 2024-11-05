@@ -27,7 +27,6 @@
     <string name="hDate_Acuario">20 enero a 18 febrero</string>
     <string name="hDate_Piscis">19 febrero a 20 marzo</string>
 
-
     <string name="hDetalle_Aries">Son los que siempre van un paso por delante, animan al resto a hacer lo mismo y de los signos en los que más puedes confiar. Eso sí, sacarán lo peor de ellos -impulsividad, impaciencia y egoísmo- si no estás a la altura de su energía. No son fáciles de llevar.</string>
     <string name="hDetalle_Tauro">Su lealtad es difícil de conseguir. Pero una vez la tengas, será para siempre. Pocas veces pierden la paciencia o hacen papelitos en público. Solo cuando les empiezan a discutir algo en lo que saben que tienen razón. Si no la tienen, también la lucharán.</string>
     <string name="hDetalle_Geminis">Uno de los rasgos de la personalidad de Géminis es que suele tener miedo al compromiso, ya que sus decisiones duran poco tiempo estables y cambian de opinión muy rápido. Son excelentes oradores. Cualquier cosa que salga por su boca te la creerás.</string>
@@ -54,8 +53,8 @@
     <string name="hRef_Acuario">Acuario representa la libertad y la rebeldía</string>
     <string name="hRef_Piscis">Piscis es el signo más creativo del horóscopo</string>
 
-
-
+    <string name="menu_favorite">Favorito</string>
+    <string name="menu_share">Compartir</string>
 
 
 

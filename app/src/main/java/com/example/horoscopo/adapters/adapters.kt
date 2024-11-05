@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.horoscopo.Data.Horoscope
 import com.example.horoscopo.R
+import com.example.horoscopo.utils.SessionManager
 
 class HoroscopeAdapter (val items: List<Horoscope>, val onItemClick:(Int)-> Unit): RecyclerView.Adapter<HoroscopeViewHolder> () {
 
@@ -54,13 +55,11 @@ class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
     var symbolImageView: ImageView = view.findViewById(R.id.symbolImageView)
     var detalleTextView: TextView = view.findViewById(R.id.detalleTextView)
     var detalleLinearLayoutView: LinearLayout =view.findViewById(R.id.detalleLinearLayoutView)
+    var favoriteImageView: ImageView = view.findViewById(R.id.favoriteImageView)
 
     fun render(horoscope: Horoscope, selectedItem: Int) {
 
-        // llamada fuera del activity para poder acceder a los metodos
         var context = itemView.context
-        //  nameTextView.text = context.getString(horoscope.name)
-        //  symbolImageView.setImageDrawable((context.getDrawable(horoscope.image)))
 
         if (horoscope.pos % 2 != 0) {                                                              // vemos si el item es par o impar
             itemView.setBackgroundColor(context.getColor(R.color.white))
@@ -82,5 +81,14 @@ class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
         } else {
             detalleLinearLayoutView.visibility = View.GONE                     // hacemos invisible el detalle
         }
+
+        if (SessionManager(itemView.context).isFavorite(horoscope.id)) {
+            favoriteImageView.visibility = View.VISIBLE
+        }
+        else {
+            favoriteImageView.visibility = View.GONE
+        }
+
+
     }
 }

@@ -9,27 +9,32 @@
 
    <ImageView
        android:id="@+id/iv"
-       android:layout_width="50dp"
-       android:layout_height="50dp"
-       android:layout_gravity="center"
-       android:src= "@drawable/icon_aries"/>
+       android:layout_width="200dp"
+       android:layout_height="200dp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       android:layout_marginTop="48dp"/>
 
     <TextView
         android:id="@+id/tv"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Detalle del horoscopo"
         android:textSize="36dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="66dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
         android:id="@+id/b"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="volver"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="621dp" />
-
+        android:text="Volver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="48dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

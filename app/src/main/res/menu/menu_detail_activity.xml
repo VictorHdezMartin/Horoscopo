@@ -4,16 +4,13 @@
 
     <item
         android:id="@+id/menu_favorite"
-        android:title="Favorito"
+        android:title="@string/menu_favorite"
         android:icon="@drawable/icon_favorite"
-        app:showAsAction="ifRoom"
-
-        />
+        app:showAsAction="always"
+        app:iconTint="@color/favorite"/>
     <item
         android:id="@+id/menu_share"
-        android:title="Compartir"
-        android:icon="@drawable/icon_compartir"
-        app:showAsAction="never"
-
-        />
+        android:title="@string/menu_share"
+        android:icon="@drawable/icon_share"
+        app:showAsAction="always"/>
 </menu>
