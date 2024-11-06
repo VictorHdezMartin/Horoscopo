@@ -11,7 +11,7 @@ import com.example.horoscopo.Data.Horoscope
 import com.example.horoscopo.R
 import com.example.horoscopo.utils.SessionManager
 
-class HoroscopeAdapter (val items: List<Horoscope>, val onItemClick:(Int)-> Unit): RecyclerView.Adapter<HoroscopeViewHolder> () {
+class HoroscopeAdapter (var items: List<Horoscope>, val onItemClick:(Int)-> Unit): RecyclerView.Adapter<HoroscopeViewHolder> () {
 
     var selectedItem = -1  // elemento seleccionado para hacerlo visible
 
@@ -27,7 +27,6 @@ class HoroscopeAdapter (val items: List<Horoscope>, val onItemClick:(Int)-> Unit
        holder.render(horoscope, selectedItem)
 
         holder.itemView.setOnClickListener(){
-            println("Hemos pinchado en: " + horoscope.id)   // lo vemos en el Logcat
             onItemClick(position)
         }
 
@@ -45,6 +44,11 @@ class HoroscopeAdapter (val items: List<Horoscope>, val onItemClick:(Int)-> Unit
             notifyItemChanged(itemToClose)                     // el elementoo ha cambiado y hay que pasarlo a GONE
             true
         }
+    }
+
+    fun updateItems(items: List<Horoscope>) {
+        this.items = items
+        notifyDataSetChanged()
     }
 }
 
