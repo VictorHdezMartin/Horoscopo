@@ -76,7 +76,6 @@ class ListActivity : AppCompatActivity() {
                 return true
             }
         })
-
         return true
     }
 }

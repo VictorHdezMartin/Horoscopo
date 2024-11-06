@@ -1,5 +1,6 @@
 package com.example.horoscopo.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,28 +25,28 @@ class HoroscopeAdapter (var items: List<Horoscope>, val onItemClick:(Int)-> Unit
     }
     override fun onBindViewHolder(holder: HoroscopeViewHolder, position: Int) {
        val horoscope = items[position]
+
        holder.render(horoscope, selectedItem)
 
-        holder.itemView.setOnClickListener(){
+       holder.itemView.setOnClickListener(){
             onItemClick(position)
-        }
+       }
 
-        holder.itemView.setOnLongClickListener() {
-            val itemToClose = selectedItem                     // elemento ha "GONE"
+       holder.itemView.setOnLongClickListener() {   // MOSTRAMOS O NO EL DETALLE DEL ITEM
+            val itemToClose = selectedItem                  // hay que pasar el elemento ha "GONE"
 
-            if (selectedItem == position) {                    // si volvemos a hacer click sobre elemento selecccionado, lo pasa a "GONE"
+            if (selectedItem == position) {                 // si volvemos a hacer click sobre elemento selecccionado, lo pasa a "GONE"
                 selectedItem = -1
             }
             else {
-                selectedItem = position                        // si no lo hacemos VISIBLE
+                selectedItem = position                     // si NO lo hacemos VISIBLE
                 notifyItemChanged(selectedItem)
             }
 
-            notifyItemChanged(itemToClose)                     // el elementoo ha cambiado y hay que pasarlo a GONE
+            notifyItemChanged(itemToClose)                  // el elemento ha cambiado y hay que pasarlo a GONE
             true
-        }
+       }
     }
-
     fun updateItems(items: List<Horoscope>) {
         this.items = items
         notifyDataSetChanged()
@@ -65,7 +66,19 @@ class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
 
         var context = itemView.context
 
-        if (horoscope.pos % 2 != 0) {                                                              // vemos si el item es par o impar
+        fillItems(horoscope)               // rellenamos los dtos de cada item
+        reDibujarCelda(context)            // pintamos los items (pares e impares)
+        showDetail(selectedItem)           // mostramos el detalle del item seleccionado
+        showFavorito(horoscope)            // mostramos si el item seleccionado es o no favorito
+    }
+    fun fillItems(horoscope: Horoscope){
+        nameTextView.setText(horoscope.name)
+        dateTextView.setText(horoscope.dates)
+        symbolImageView.setImageResource(horoscope.image)
+        detalleTextView.setText(horoscope.referencia)
+    }
+    fun reDibujarCelda(context: Context){
+        if (adapterPosition % 2 != 0) {
             itemView.setBackgroundColor(context.getColor(R.color.white))
             nameTextView.setTextColor(context.getColor(R.color.granate))
             dateTextView.setTextColor(context.getColor(R.color.black))
@@ -74,25 +87,20 @@ class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
             nameTextView.setTextColor(context.getColor(R.color.granate))
             dateTextView.setTextColor(context.getColor(R.color.marino))
         }
-
-        nameTextView.setText(horoscope.name)
-        dateTextView.setText(horoscope.dates)
-        symbolImageView.setImageResource(horoscope.image)
-        detalleTextView.setText(horoscope.referencia)
-
+    }
+    fun showDetail(selectedItem: Int){
         if (adapterPosition == selectedItem) {
             detalleLinearLayoutView.visibility = View.VISIBLE
         } else {
-            detalleLinearLayoutView.visibility = View.GONE                     // hacemos invisible el detalle
+            detalleLinearLayoutView.visibility = View.GONE
         }
-
+    }
+    fun showFavorito(horoscope: Horoscope){
         if (SessionManager(itemView.context).isFavorite(horoscope.id)) {
             favoriteImageView.visibility = View.VISIBLE
         }
         else {
             favoriteImageView.visibility = View.GONE
         }
-
-
     }
 }
