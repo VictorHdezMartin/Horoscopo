@@ -56,7 +56,7 @@ class HoroscopeAdapter (var items: List<Horoscope>, val onItemClick:(Int)-> Unit
 class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
 
     var nameTextView: TextView = view.findViewById(R.id.nameTextView)
-    var dateTextView: TextView = view.findViewById(R.id.dateTextView)
+    var dateTextView: TextView = view.findViewById(R.id.datesTextView)
     var symbolImageView: ImageView = view.findViewById(R.id.symbolImageView)
     var detalleTextView: TextView = view.findViewById(R.id.detalleTextView)
     var detalleLinearLayoutView: LinearLayout =view.findViewById(R.id.detalleLinearLayoutView)
@@ -96,7 +96,7 @@ class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
         }
     }
     fun showFavorito(horoscope: Horoscope){
-        if (SessionManager(itemView.context).isFavorite(horoscope.id)) {
+        if (SessionManager(itemView.context).getFavorite(horoscope.id)) {
             favoriteImageView.visibility = View.VISIBLE
         }
         else {

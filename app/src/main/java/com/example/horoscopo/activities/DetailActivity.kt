@@ -1,6 +1,7 @@
 package com.example.horoscopo.activities
 
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -12,6 +13,15 @@ import com.example.horoscopo.Data.Horoscope
 import com.example.horoscopo.Data.HoroscopeProvider
 import com.example.horoscopo.R
 import com.example.horoscopo.utils.SessionManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.InputStream
+import java.io.InputStreamReader
+import java.net.URL
+import javax.net.ssl.HttpsURLConnection
 
 class DetailActivity : AppCompatActivity() {
 
@@ -19,6 +29,9 @@ class DetailActivity : AppCompatActivity() {
     lateinit var favoriteMenuItem: MenuItem
     lateinit var session: SessionManager
     var isFavorite = false
+
+    lateinit var symbolImageView: ImageView
+    lateinit var luckTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -33,16 +46,17 @@ class DetailActivity : AppCompatActivity() {
       supportActionBar?.setDisplayHomeAsUpEnabled(true)                        // activamos el botón atrás del menú
 
       session = SessionManager(this)
-      isFavorite = session.isFavorite(horoscope.id)
+      isFavorite = session.getFavorite(horoscope.id)
 
-      findViewById<TextView>(R.id.tv).setText(horoscope.name)
-      findViewById<ImageView>(R.id.iv).setImageResource(horoscope.image)
-      findViewById<TextView>(R.id.detalleSigno).setText(horoscope.description)
+   // Busco los componenetes visuales
 
-      findViewById<Button>(R.id.b).setOnClickListener {
-          finish()
+      luckTextView = findViewById(R.id.luckTextView)
+      symbolImageView = findViewById(R.id.symbolImageView)
+
+      symbolImageView.setImageResource(horoscope.image)
+
+      getHoroscopeLuck()
       }
-    }
 
 // inflamos el menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -61,14 +75,10 @@ class DetailActivity : AppCompatActivity() {
                 return true
             }
             R.id.menu_favorite -> {
-                if (isFavorite) {
-                    session.setFavorite("")
-                }
-                else {
-                    session.setFavorite(horoscope.id)
-                }
-
                 isFavorite = !isFavorite
+
+                session.setFavorite(horoscope.id, isFavorite)
+
                 setFavotiteIcon()
                 return true
             }
@@ -87,6 +97,39 @@ class DetailActivity : AppCompatActivity() {
             favoriteMenuItem.setIcon(R.drawable.icon_favorite)
         }
     }
+
+    fun getHoroscopeLuck() {
+        var result = "Antes de hacer la llamada"
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val url = URL("https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${horoscope.id}&day=TODAY")
+            val con = url.openConnection() as HttpsURLConnection
+            con.requestMethod = "GET"
+            val responseCode = con.responseCode
+            println("Response Code :: $responseCode")
+            if (responseCode == HttpsURLConnection.HTTP_OK) { // connection ok
+                val jsonResponse = readStream(con.inputStream).toString()
+                result = JSONObject(jsonResponse).getJSONObject("data").getString("horoscope_data")
+            } else {
+                result = "Hubo un error en la llamada"
+            }
+
+            CoroutineScope(Dispatchers.Main).launch {
+                luckTextView.text = result
+            }
+        }
+    }
+
+    private fun readStream (inputStream: InputStream) : StringBuilder {
+        val reader = BufferedReader(InputStreamReader(inputStream))
+        val response = StringBuilder()
+        var line: String?
+        while (reader.readLine().also { line = it } != null) {
+            response.append(line)
+        }
+        reader.close()
+        return response
+    }
     override fun onBackPressed() {            // para el botón físico del teléfono
         if (horoscope.id == "Piscis"){
             Toast.makeText(this, "no puedes volver", Toast.LENGTH_SHORT).show()
@@ -95,4 +138,12 @@ class DetailActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
+
+
+
+
+
+
+
+
 }
