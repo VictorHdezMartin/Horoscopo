@@ -57,6 +57,14 @@
     <string name="menu_share">Compartir</string>
     <string name="menu_search">Buscar</string>
 
+    <string name="horoscope_of_day">Horóscopo del día:</string>
+
+    <string name="menu_daily">Hoy</string>
+    <string name="menu_weekly">Semanal</string>
+    <string name="menu_monthly">Mensual</string>
+
+    <string name="volverBtn">volver</string>
+
 
 
 </resources>

@@ -40,7 +40,7 @@ class ListActivity : AppCompatActivity() {
     }
     private fun navigateToDetail(horoscope: Horoscope) {
         val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("horoscope_id", horoscope.id)
+        intent.putExtra(DetailActivity.EXTRA_HOROSCOPE_ID, horoscope.id)
         startActivity(intent)
     }
 
@@ -72,7 +72,7 @@ class ListActivity : AppCompatActivity() {
                 }
 
                 // Le paso la nueva lista al adapter
-                adapter.updateItems(horoscopeList)
+                adapter.updateData(horoscopeList, newText)
                 return true
             }
         })

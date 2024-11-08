@@ -16,7 +16,7 @@ class HoroscopeProvider {
             Horoscope("libra", R.string.hName_Libra, R.string.hDate_Libra, R.drawable.icon_libra, R.string.hRef_Libra, R.string.hDetalle_Libra),
             Horoscope("scorpio", R.string.hName_Escorpio, R.string.hDate_Escorpio, R.drawable.icon_escorpio, R.string.hRef_Escorpio, R.string.hDetalle_Escorpio),
             Horoscope("sagittarius", R.string.hName_Sagitario, R.string.hDate_Sagitario, R.drawable.icon_sagitario, R.string.hRef_Sagitario, R.string.hDetalle_Sagitario),
-            Horoscope("capricornio", R.string.hName_Capricornio, R.string.hDate_Capricornio, R.drawable.icon_capricornio, R.string.hRef_Capricornio, R.string.hDetalle_Capricornio),
+            Horoscope("capricorn", R.string.hName_Capricornio, R.string.hDate_Capricornio, R.drawable.icon_capricornio, R.string.hRef_Capricornio, R.string.hDetalle_Capricornio),
             Horoscope("aquarius", R.string.hName_Acuario, R.string.hDate_Acuario, R.drawable.icon_acuario, R.string.hRef_Acuario, R.string.hDetalle_Acuario),
             Horoscope("pisces", R.string.hName_Piscis, R.string.hDate_Piscis, R.drawable.icon_piscis, R.string.hRef_Piscis, R.string.hDetalle_Piscis)
         )

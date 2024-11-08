@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,6 +14,8 @@ import com.example.horoscopo.Data.Horoscope
 import com.example.horoscopo.Data.HoroscopeProvider
 import com.example.horoscopo.R
 import com.example.horoscopo.utils.SessionManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,38 +27,98 @@ import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
 class DetailActivity : AppCompatActivity() {
+    companion object {
+        const val EXTRA_HOROSCOPE_ID = "HOROSCOPE_ID"
+    }
 
-    lateinit var horoscope: Horoscope
-    lateinit var favoriteMenuItem: MenuItem
-    lateinit var session: SessionManager
     var isFavorite = false
+    lateinit var horoscope: Horoscope
+    lateinit var session: SessionManager
 
+    lateinit var favoriteMenuItem: MenuItem
     lateinit var symbolImageView: ImageView
+    lateinit var luckLabelTextView: TextView
     lateinit var luckTextView: TextView
+
+    lateinit var navigationBar: BottomNavigationView
+    lateinit var progressIndicator: LinearProgressIndicator
+    lateinit var volverBoton: Button
+    lateinit var anteriorBoton: Button
+    lateinit var siguienteBoton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
 
       setContentView(R.layout.activity_detail)
 
-      val id = intent.getStringExtra("horoscope_id")!!
+      val id = intent.getStringExtra(EXTRA_HOROSCOPE_ID)!!
       horoscope = HoroscopeProvider.findById(id)
+
+      session = SessionManager(this)
+      isFavorite = session.getFavorite(horoscope.id)
 
       supportActionBar?.title = getString(horoscope.name)
       supportActionBar?.subtitle = getString(horoscope.dates)
       supportActionBar?.setDisplayHomeAsUpEnabled(true)                        // activamos el botón atrás del menú
 
-      session = SessionManager(this)
-      isFavorite = session.getFavorite(horoscope.id)
-
    // Busco los componenetes visuales
-
-      luckTextView = findViewById(R.id.luckTextView)
       symbolImageView = findViewById(R.id.symbolImageView)
+      luckLabelTextView = findViewById(R.id.luckLabelTextView)
+      luckTextView = findViewById(R.id.luckTextView)
+      navigationBar = findViewById(R.id.navigationBar)
+      progressIndicator = findViewById(R.id.progressIndicator)
+      volverBoton = findViewById(R.id.volverBoton)
+      anteriorBoton = findViewById(R.id.anteriorBoton)
+      siguienteBoton = findViewById(R.id.siguienteBoton)
 
+      luckLabelTextView.setText(horoscope.name)
       symbolImageView.setImageResource(horoscope.image)
+      volverBoton.setText(R.string.volverBtn)
 
-      getHoroscopeLuck()
+      navigationBar.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_daily -> {
+                    getHoroscopeLuck("daily")
+                }
+                R.id.menu_weekly -> {
+                    getHoroscopeLuck("weekly")
+                }
+                R.id.menu_monthly -> {
+                    getHoroscopeLuck("monthly")
+                }
+            }
+            return@setOnItemSelectedListener true
+        }
+
+        navigationBar.selectedItemId = R.id.menu_daily
+
+        volverBoton.setOnClickListener(){
+            finish()
+        }
+
+        anteriorBoton.setOnClickListener(){
+
+          var horoscopeList = HoroscopeProvider.findAll()
+
+          horoscopeList.get(horoscope.id)
+
+            horoscopeList.find{horoscope.id}
+
+
+
+
+
+
+
+
+
+        }
+
+        siguienteBoton.setOnClickListener(){
+
+            HoroscopeProvider.findById(horoscope.id)
+
+        }
       }
 
 // inflamos el menu
@@ -98,11 +161,12 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    fun getHoroscopeLuck() {
+    fun getHoroscopeLuck(periodo: String) {
         var result = "Antes de hacer la llamada"
 
+        progressIndicator.visibility = View.VISIBLE
         CoroutineScope(Dispatchers.IO).launch {
-            val url = URL("https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${horoscope.id}&day=TODAY")
+            val url = URL("https://horoscope-app-api.vercel.app/api/v1/get-horoscope/$periodo?sign=${horoscope.id}&day=TODAY")
             val con = url.openConnection() as HttpsURLConnection
             con.requestMethod = "GET"
             val responseCode = con.responseCode
@@ -115,6 +179,7 @@ class DetailActivity : AppCompatActivity() {
             }
 
             CoroutineScope(Dispatchers.Main).launch {
+                progressIndicator.visibility = View.GONE
                 luckTextView.text = result
             }
         }
@@ -130,6 +195,8 @@ class DetailActivity : AppCompatActivity() {
         reader.close()
         return response
     }
+
+  /*
     override fun onBackPressed() {            // para el botón físico del teléfono
         if (horoscope.id == "Piscis"){
             Toast.makeText(this, "no puedes volver", Toast.LENGTH_SHORT).show()
@@ -140,10 +207,6 @@ class DetailActivity : AppCompatActivity() {
     }
 
 
-
-
-
-
-
+*/
 
 }

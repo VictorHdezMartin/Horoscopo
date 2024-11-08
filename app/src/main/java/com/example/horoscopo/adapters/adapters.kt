@@ -12,24 +12,32 @@ import com.example.horoscopo.Data.Horoscope
 import com.example.horoscopo.R
 import com.example.horoscopo.utils.SessionManager
 
-class HoroscopeAdapter (var items: List<Horoscope>, val onItemClick:(Int)-> Unit): RecyclerView.Adapter<HoroscopeViewHolder> () {
+//class HoroscopeAdapter (var items: List<Horoscope>, val onItemClick:(Int)-> Unit): RecyclerView.Adapter<HoroscopeViewHolder> () {
+class HoroscopeAdapter(private var dataSet: List<Horoscope>, private val onItemClickListener: (Int) -> Unit) :
+    RecyclerView.Adapter<HoroscopeViewHolder>() {
 
     var selectedItem = -1  // elemento seleccionado para hacerlo visible
+    private var highlightText: String? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoroscopeViewHolder {
        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_horoscope, parent, false)
        return HoroscopeViewHolder(view)
     }
     override fun getItemCount(): Int {
-       return items.size
+     //  return items.size
+       return dataSet.size
     }
     override fun onBindViewHolder(holder: HoroscopeViewHolder, position: Int) {
-       val horoscope = items[position]
+       val horoscope = dataSet[position]
 
        holder.render(horoscope, selectedItem)
 
+       if (highlightText != null) {
+           holder.highlight(highlightText!!)
+       }
+
        holder.itemView.setOnClickListener(){
-            onItemClick(position)
+           onItemClickListener(position)
        }
 
        holder.itemView.setOnLongClickListener() {   // MOSTRAMOS O NO EL DETALLE DEL ITEM
@@ -47,20 +55,40 @@ class HoroscopeAdapter (var items: List<Horoscope>, val onItemClick:(Int)-> Unit
             true
        }
     }
+
+/*
     fun updateItems(items: List<Horoscope>) {
         this.items = items
+        notifyDataSetChanged()
+    }
+*/
+    fun updateData (newDataSet: List<Horoscope>) {
+        updateData(newDataSet, null)
+    }
+    fun updateData(newDataSet: List<Horoscope>, highlight: String?) {
+        this.highlightText = highlight
+        dataSet = newDataSet
         notifyDataSetChanged()
     }
 }
 
 class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
 
-    var nameTextView: TextView = view.findViewById(R.id.nameTextView)
-    var dateTextView: TextView = view.findViewById(R.id.datesTextView)
-    var symbolImageView: ImageView = view.findViewById(R.id.symbolImageView)
-    var detalleTextView: TextView = view.findViewById(R.id.detalleTextView)
-    var detalleLinearLayoutView: LinearLayout =view.findViewById(R.id.detalleLinearLayoutView)
-    var favoriteImageView: ImageView = view.findViewById(R.id.favoriteImageView)
+    var nameTextView: TextView
+    var dateTextView: TextView
+    var symbolImageView: ImageView
+    var detalleTextView: TextView
+    var detalleLinearLayoutView: LinearLayout
+    var favoriteImageView: ImageView
+
+    init {
+        nameTextView = view.findViewById(R.id.nameTextView)
+        dateTextView = view.findViewById(R.id.datesTextView)
+        symbolImageView = view.findViewById(R.id.symbolImageView)
+        detalleTextView = view.findViewById(R.id.detalleTextView)
+        detalleLinearLayoutView = view.findViewById(R.id.detalleLinearLayoutView)
+        favoriteImageView = view.findViewById(R.id.favoriteImageView)
+    }
 
     fun render(horoscope: Horoscope, selectedItem: Int) {
 
@@ -102,5 +130,15 @@ class HoroscopeViewHolder(view: View): RecyclerView.ViewHolder (view){
         else {
             favoriteImageView.visibility = View.GONE
         }
+    }
+    fun highlight(text: String) {
+        try {
+            val highlighted = nameTextView.text.toString()
+            nameTextView.text = highlighted
+        } catch (e: Exception) { }
+        try {
+            val highlighted = detalleTextView.text.toString()
+            detalleTextView.text = highlighted
+        } catch (e: Exception) { }
     }
 }
